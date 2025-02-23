@@ -40,7 +40,7 @@ impl<'a> Iterator for SchemaListItemIter<'a> {
     type Item = Option<SchemaListItem<'a>>;
 
     fn next(&mut self) -> Option<Self::Item> {
-        if self.index < self.len - 1 {
+        if self.index < self.len {
             let ptr = unsafe { self.raw.offset(self.index as isize) };
             let value = unsafe { ptr.as_ref().map(SchemaListItem::from_raw) };
             self.index += 1;

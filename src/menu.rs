@@ -44,7 +44,7 @@ impl<'a> Iterator for CandidateIter<'a> {
     type Item = Option<Candidate<'a>>;
 
     fn next(&mut self) -> Option<Self::Item> {
-        if self.index < self.len - 1 {
+        if self.index < self.len {
             let ptr = unsafe { self.raw.offset(self.index) };
             let value = unsafe { ptr.as_ref().map(Candidate::from_raw) };
             self.index += 1;
